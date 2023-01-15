@@ -5838,6 +5838,7 @@ a.post-thumbnail:hover {
     max-width: 100%;
     border-radius: 0;
     margin: 0;
+    background-color: rgb(235, 243, 250);
   }
 
   .page-content.single-post {
