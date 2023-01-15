@@ -1188,6 +1188,7 @@ td {
 
 .text-logo {
   float: left;
+  font-family: sans-serif;
 }
 
 .text-logo a {
@@ -5673,11 +5674,18 @@ a.post-thumbnail:hover {
 }
 
 .home-content.third-style .hp-main-title {
+  font-family: 'Times New Roman', Times, serif;
   font-size: 48px;
   line-height: 1.2em;
   margin-top: 5px;
   margin-bottom: 15px;
 }
+.home-content.third-style p {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20;
+  font-style: italic;
+}
+
 
 .home-content.third-style .hp-buttons {
   margin-top: 30px;
@@ -5862,7 +5870,7 @@ a.post-thumbnail:hover {
 
   .page-container {
     min-height: 100vh;
-    padding-bottom: 120px;
+    padding-bottom: 80px;
   }
 
   .site-footer {
@@ -5905,10 +5913,29 @@ a.post-thumbnail:hover {
   float: none;
   height: 100%;
   vertical-align: middle;
-  z-index: 1;
+  z-index: 10;
 }
 
-.story-row h3,
+.story-row h3 {
+  text-align: left;
+  font-weight: bold;
+  font-style: italic;
+  font-family: Calibri;
+}
+
+.story-row .subname {
+  text-align: left;
+  font-style: italic;
+  font-size: 12;
+}
+
+
+.story-row .skill {
+  text-align: right;
+  font-style: italic;
+  font-size: 12;
+}
+
 .story-row p {
   text-align: left;
 }
@@ -5934,12 +5961,14 @@ a.post-thumbnail:hover {
 
 .story-date {
   display: inline-block;
-  background: url(../images/heart_img_story.png) no-repeat;
+  background: url(../img/heart_img_story.png) no-repeat;
   background-size: 90px;
   width: 90px;
   height: 90px;
   color: #fff;
   line-height: 1em;
+  font-weight: bold;
+
 }
 
 .story-date .year {
@@ -5952,6 +5981,7 @@ a.post-thumbnail:hover {
   font-size: 16px;
   font-weight: 300;
   margin-top: 5px;
+  font-style: italic;
 }
 
 .our-story .vertical-line {
