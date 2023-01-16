@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/main.css" type="text/css">
 
     <script src="js/modernizr.custom.js"></script>
+
   </head>
 
   <body class="page">
@@ -59,7 +60,7 @@
                   <a href="index.html">About Me</a>
                   <ul class="sub-menu">
                     <li class="menu-item">
-                      <a href="index-2.html">About me 2</a>
+                      <a href="index-2.html">Brief</a>
                     </li>
                   </ul>
                 </li>
@@ -68,7 +69,7 @@
                   <a href="resume.html">Resume</a>
                 </li>
 
-                <li class="menu-item menu-item-has-children">
+                <!-- <li class="menu-item menu-item-has-children">
                   <a href="portfolio.html">Portfolio</a>
                   <ul class="sub-menu">
                     <li class="menu-item">
@@ -84,7 +85,7 @@
                       <a href="portfolio-5-columns.html">Portfolio 5 Columns</a>
                     </li>
                   </ul>
-                </li>
+                </li> -->
                 
                 <li class="menu-item menu-item-has-children">
                   <a href="blog.html">Blog</a>
@@ -116,9 +117,21 @@
             <div id="primary" class="content-area">
 
               <div class="page-title">
+                <div class="header-date mobile-hidden">
+                  <!-- <p>Saturday, 23 <span class="main-color">September</span> 2017</p> -->
+                  
+                </div>
                 <h1>Resume</h1>
                 <div class="page-subtitle">
-                    <h4> 8 Years of Experience</h4>
+                    <h4> <p id='current-year'></p> Years of Experience</h4>
+                    <script>
+                      year = new Date().getFullYear() - 2019;
+                      document.getElementById("current-year").innerHTML = year.toString();
+                    </script>
+                </div>
+                
+                <div class="home-buttons">
+                  <a href="" target="_blank" class="btn btn-primary">Download CV</a>
                 </div>
               </div>
 
@@ -131,25 +144,26 @@
                     </div>
 
                     <div id="timeline_1" class="timeline clearfix">
-                      <div class="timeline-item clearfix">
+                      <!-- <div class="timeline-item clearfix">
                         <h5 class="item-period ">2009</h5>
                         <span class="item-company">University of Studies</span>
                         <h4 class="item-title">UI Design</h4>
                         <p>Duis posuere, quam non imperdiet egestas, eros enim mattis mauris, in posuere lacus arcu quis felis. Etiam interdum erat non enim venenatis fermentum.</p>
+                      </div> -->
+
+                      <div class="timeline-item clearfix">
+                        <h5 class="item-period ">2019</h5>
+                        <span class="item-company">Ha Noi University of science and technology</span>
+                        <h4 class="item-title">Graduate</h4>
+                        <p>Major: School of electronics and telecommunication</p>
+                        <p>Degree: good</p>
                       </div>
 
                       <div class="timeline-item clearfix">
-                        <h5 class="item-period ">2008</h5>
-                        <span class="item-company">University of Studies</span>
-                        <h4 class="item-title">Graphic Design</h4>
-                        <p>Aliquam tincidunt malesuada tortor vitae iaculis. In eu turpis iaculis, feugiat risus quis, aliquet urna. Quisque fringilla mollis risus, eu pulvinar dolor.</p>
-                      </div>
-
-                      <div class="timeline-item clearfix">
-                        <h5 class="item-period ">2007</h5>
-                        <span class="item-company">University of Studies</span>
-                        <h4 class="item-title">Frontend Development</h4>
-                        <p>Maecenas finibus nec sem ut imperdiet. Ut tincidunt est ac dolor aliquam sodales. Phasellus sed mauris hendrerit, laoreet sem in, lobortis ante.</p>
+                        <h5 class="item-period ">2014</h5>
+                        <span class="item-company">Ha Noi University of science and technology</span>
+                        <h4 class="item-title">University of Studies</h4>
+                        <p>Major: School of electronics and telecommunication</p>
                       </div>
 
                     </div>
@@ -162,24 +176,54 @@
 
                     <div id="timeline_2" class="timeline clearfix">
                       <div class="timeline-item clearfix">
-                        <h5 class="item-period current">2016 - Current</h5>
-                        <span class="item-company">Rolling Thunder</span>
-                        <h4 class="item-title">Lead UI/UX Designer</h4>
-                        <p>Praesent dignissim sollicitudin justo, sed elementum quam lacinia quis. Phasellus eleifend tristique posuere. Sed vitae dui nec magna.</p>
+                        <h5 class="item-period current">May 2021 - Jul 2022</h5>
+                        <span class="item-company">FPT Software</span>
+                        <h4 class="item-title">Spring boot web project (Singapore customer)</h4>
+                        <p>1. Description</p>
+                        <h6>      o Manage member and claim about medical bill</h6>
+                        <h6>      o Manage benefit and rule for each object (company, employee and dependent)
+                        <h6>      o Summarize all claim and assist with report generation</h6>
+                        <p>2. Developments</p>
+                        <h6>      o Coding Java backend base on Spring boot framework</h6>
+                        <h6>      o Using Restful API standard design.</h6>
+                        <h6>      o Using micro-services architecture and AWS technology in projec</h6>
+                        <h6>      o Knowledge of Spring security (JWT, OAuth2)</h6>
+                        <h6>      o Work with H2, Oracle database (JDBC, Hibernate and native SQL).</h6>
+                        <h6>      o Using asynchronous and jasper reports to support generate report</h6>
+                        <h6>      o Using Scheduler to run batch job.</h6>
                       </div>
 
                       <div class="timeline-item clearfix">
-                        <h5 class="item-period ">2013 - 2016</h5>
-                        <span class="item-company">Locost Accessories</span>
-                        <h4 class="item-title">Senior UI/UX Designer</h4>
-                        <p>Maecenas tempus faucibus rutrum. Duis eu aliquam urna. Proin vitae nulla tristique, ornare felis id, congue libero. Nam volutpat euismod quam.</p>
+                        <h5 class="item-period ">Oct 2020 - 21 May 2021</h5>
+                        <span class="item-company">LG R&D Center Viet Nam</span>
+                        <h4 class="item-title">Telematics project</h4>
+                        <p>1. Description</p>
+                        <h6>      o Telematics system use some communication protocols on the car as: CAN, Ethernet and mobile internet to get and transfer data</h6>
+                        <h6>      o Summary and saving all errors on cars. Through some applications, automotive mender can easily and quickly identify the fault of the car</h6>
+                        <h6>      o Team size: 23 members</h6>
+                        <p>2. Developments</p>
+                        <h6>      o Coding C++ base on Yocto platform and LG platform</h6>
+                        <h6>      o Using IPC with Android Binder and Linux</h6>
+                        <h6>      o Working with Diagnostic module for vehicle</h6>
+                        <h6>      o Review and optimize commit code</h6>
+                        <h6>      o Setup environment to generate template, build and run unit test using Google mock on projec</h6>
                       </div>
 
                       <div class="timeline-item clearfix">
-                        <h5 class="item-period ">2011 - 2013</h5>
-                        <span class="item-company">Sagebrush</span>
-                        <h4 class="item-title">Junior UI/UX Designer</h4>
-                        <p>Duis mollis nunc quis quam viverra venenatis. Nulla nulla arcu, congue vitae nunc ac, sodales ultricies diam. Nullam justo leo, tincidunt sit amet.</p>
+                        <h5 class="item-period ">1 Jul 2019 - May 2021</h5>
+                        <span class="item-company">LG R&D Center Viet Nam</span>
+                        <h4 class="item-title">AVN project</h4>
+                        <p>1. Description</p>
+                        <h6>      o AVN (Audio Video Navigation) system on the car AVN system manages all entertainment activities in the car as: play music, play radio, video and navigation. Forward phone contact, phone call, map and some application through Android Auto (Android) or Carplay (IOS).</h6>
+                        <h6>      o Manage climate, air conditional on the car.</h6>
+                        <h6>      o Team size: 19~23 (Change over time)</h6>
+                        <p>2. Developments</p>
+                        <h6>      o Coding C++</h6>
+                        <h6>      o Using IPC message queue.</h6>
+                        <h6>      o Person in charge of Time service (manage the timer on AVN system) and Favorite service (manage all favorites such as songs, radio tunes, phone numbers to quick callback).</h6>
+                        <h6>      o Design and implement new feature</h6>
+                        <h6>      o Use SQLite to manage database</h6>
+                    
                       </div>
                     </div>
                   </div>
@@ -205,7 +249,7 @@
 
                         <div class="certi-content">
                           <div class="certi-title">
-                            <h4>Psyhology of Intertnation Design</h4>
+                            <h4>Certificate</h4>
                           </div>
 
                           <div class="certi-id">
@@ -232,7 +276,7 @@
 
                         <div class="certi-content">
                           <div class="certi-title">
-                            <h4>Psyhology of Intertnation Design</h4>
+                            <h4>Certificate</h4>
                           </div>
 
                           <div class="certi-id">
@@ -262,13 +306,13 @@
                 <div class="row">
                   <div class=" col-xs-12 col-sm-6 ">
                     <div class="block-title">
-                      <h2>Design Skills</h2>
+                      <h2>Coding Skills</h2>
                     </div>
 
                     <div id="skills_1" class="skills-info skills-first-style">
                       <!-- Skill 1 -->
                       <div class="clearfix">
-                        <h4>UI/UX Design</h4>
+                        <h4>Java core</h4>
                         <div class="skill-value">95%</div>
                       </div>
 
@@ -279,18 +323,18 @@
                       
                       <!-- Skill 2 -->
                       <div class="clearfix">
-                        <h4>Print Design</h4>
-                        <div class="skill-value">75%</div>
+                        <h4>Spring boot framework</h4>
+                        <div class="skill-value">95%</div>
                       </div>
                       
-                      <div id="skill_2" data-value="75" class="skill-container">
+                      <div id="skill_2" data-value="95" class="skill-container">
                         <div class="skill-percentage"></div>
                       </div>
                       <!-- /Skill 2 -->
 
                       <!-- Skill 3 -->
                       <div class="clearfix">
-                        <h4>Graphic Design</h4>
+                        <h4>redis</h4>
                         <div class="skill-value">85%</div>
                       </div>
                       <div id="skill_3" data-value="85" class="skill-container">
@@ -300,7 +344,7 @@
 
                       <!-- Skill 4 -->
                       <div class="clearfix">
-                        <h4>Logo Design</h4>
+                        <h4>kafka</h4>
                         <div class="skill-value">90%</div>
                       </div>
                       <div id="skill_4" data-value="90" class="skill-container">
@@ -314,24 +358,24 @@
 
                   <div class=" col-xs-12 col-sm-6 ">
                     <div class="block-title">
-                      <h2>Coding Skills</h2>
+                      <h2>Database Skills</h2>
                     </div>
 
 
                     <div id="skills_2" class="skills-info skills-first-style">
                       <!-- Skill 5 -->
                       <div class="clearfix">
-                        <h4>HTML / CSS</h4>
-                        <div class="skill-value">100%</div>
+                        <h4>Hibernate</h4>
+                        <div class="skill-value">95%</div>
                       </div>
-                      <div id="skill_5" data-value="100" class="skill-container">
+                      <div id="skill_5" data-value="95" class="skill-container">
                         <div class="skill-percentage"></div>
                       </div>
                       <!-- /Skill 5 -->
 
                       <!-- Skill 6 -->
                       <div class="clearfix">
-                        <h4>PHP</h4>
+                        <h4>SQL query</h4>
                         <div class="skill-value">90%</div>
                       </div>
                       <div id="skill_6" data-value="90" class="skill-container">
@@ -341,20 +385,20 @@
 
                       <!-- Skill 7 -->
                       <div class="clearfix">
-                        <h4>JavaScript</h4>
-                        <div class="skill-value">90%</div>
+                        <h4>mongodb</h4>
+                        <div class="skill-value">85%</div>
                       </div>
-                      <div id="skill_7" data-value="90" class="skill-container">
+                      <div id="skill_7" data-value="85" class="skill-container">
                         <div class="skill-percentage"></div>
                       </div>
                       <!-- /Skill 7 -->
 
                       <!-- Skill 8 -->
                       <div class="clearfix">
-                        <h4>Smarty / Twig</h4>
-                        <div class="skill-value">85%</div>
+                        <h4>Oracle / postgres</h4>
+                        <div class="skill-value">90%</div>
                       </div>
-                      <div id="skill_8" data-value="85" class="skill-container">
+                      <div id="skill_8" data-value="90" class="skill-container">
                         <div class="skill-percentage"></div>
                       </div>
                       <!-- /Skill 8 -->

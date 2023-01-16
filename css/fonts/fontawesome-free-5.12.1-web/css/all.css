@@ -3094,7 +3094,8 @@ readers do not read off random characters that represent icons */
   content: "\f10d"; }
 
 .fa-quote-right:before {
-  content: "\f10e"; }
+  content: "\f10e";
+}
 
 .fa-quran:before {
   content: "\f687"; }
