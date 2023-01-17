@@ -44,7 +44,7 @@
                 
             <!-- Text Logo -->
             <div class="text-logo">
-              <a href="index.html">
+              <a href="index-1.html">
                 <div class="logo-symbol">N</div>
                 <div class="logo-text">Nam <span>Nguyễn Văn</span></div>
               </a>
@@ -54,18 +54,21 @@
             <!-- Navigation -->
             <div class="site-nav mobile-menu-hide">
               <ul class="leven-classic-menu site-main-menu">
-                <li class="menu-item menu-item-has-children current-menu-item">
-                  <a href="index.html">About Me</a>
-                  <ul class="sub-menu">
+                <li class="menu-item">
+                  <a href="index.html">Home</a>
+                </li>
+              <li class="menu-item">
+                  <a href="index-1.html">About Me</a>
+                  <!-- <ul class="sub-menu">
                     <li class="menu-item">
-                      <a href="index-2.html">Brief</a>
+                      <a href="index.html">Brief</a>
                     </li>
-                  </ul>
+                  </ul> -->
                 </li>
 
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                   <a href="resume.html">Resume</a>
-                </li>
+                </li> -->
 
                 <!-- <li class="menu-item menu-item-has-children">
                   <a href="portfolio.html">Portfolio</a>
@@ -86,13 +89,13 @@
                 </li> -->
                 
                 <li class="menu-item menu-item-has-children current-menu-item">
-                  <a href="blog.html">Blog</a>
+                  <a>Blog</a>
                   <ul class="sub-menu">
                     <li class="menu-item">
-                      <a href="blog.html">Blog 2 Columns</a>
+                      <a href="/blog.html">Linux</a>
                     </li>
                     <li class="menu-item">
-                      <a href="blog-3-columns.html">Blog 3 Columns</a>
+                      <a href="/blog-3-columns.html">Java Spring Boot</a>
                     </li>
                   </ul>
                 </li>
@@ -117,50 +120,52 @@
 
                 <article class="post">
 
+                
                   <header class="entry-header">
                     <div class="entry-meta entry-meta-top">
-                      <span><a href="#" rel="category tag">WordPress</a></span>      
+                      <p id='param'></p>
+                      <h2 id="fileName"></h2>
                     </div><!-- .entry-meta -->
+                    <div class="p-40"></div>
 
-                    <h2 class="entry-title">How to Make a WordPress Plugin Extensible</h2>
                   </header><!-- .entry-header -->
-
-                  <div class="post-thumbnail">
+                  <!-- <div class="post-thumbnail">
                     <img src="./img/blog/blog_post_1_full.jpg" alt=""  />
-                  </div>
+                  </div> -->
 
                   <div class="post-content">
                     <div class="entry-content">
 
-                      <div class="row">
-                        <div class=" col-xs-12 col-sm-12 ">
+                        <!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
+                        <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam cursus lorem a turpis feugiat, et porttitor leo dapibus. In ut tincidunt lectus, id hendrerit enim. Maecenas at nibh eu nulla dignissim posuere. Nullam viverra vitae elit a tempus. Donec quis eleifend eros. Donec imperdiet nisi mi, in ultricies risus porta ac. Nullam laoreet convallis nibh sed congue. Donec nulla ipsum, tincidunt a augue maximus, pellentesque imperdiet lectus. Aenean posuere consequat libero, id efficitur quam dictum volutpat.</p>
-                            
-                            <p>Donec mollis a lacus a pharetra. Nam facilisis enim erat, in scelerisque eros mollis quis. Aliquam erat volutpat. Nam vel nibh justo. Nunc vestibulum leo a ultricies malesuada. Proin quis volutpat sem. Morbi consequat lacinia pulvinar.</p>
-                            
-                            <div class="single-image ">
-                              <a href="./img/blog/blog_post_2_full.jpg" class="lightbox">
-                                <img src="./img/blog/blog_post_2_full.jpg" alt="image">
-                              </a>
-                            </div>
+                        <!-- Load the element definition -->
+                        <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
 
-                            <p>Cras commodo, nulla a commodo sodales, nisl mauris interdum lectus, ac mattis lacus purus ut nunc. Fusce volutpat aliquam euismod. Aliquam pulvinar neque turpis, in tincidunt mi varius et. Curabitur vitae tempus mauris, porta dictum ante. Nam pellentesque et mauris a suscipit. Vivamus gravida erat nec elit ullamcorper, quis laoreet metus efficitur. Duis vulputate, mauris a auctor pretium, elit nisl eleifend nulla, non accumsan augue massa quis tellus. Aliquam at justo libero.</p><p>Donec mollis a lacus a pharetra. Nam facilisis enim erat, in scelerisque eros mollis quis. Aliquam erat volutpat. Nam vel nibh justo. Nunc vestibulum leo a ultricies malesuada. Proin quis volutpat sem. Morbi consequat lacinia pulvinar.</p>
+                        <!-- Simply set the `src` attribute to your MD file and win -->
+                        <zero-md id='linuxFile' src=""></zero-md>
+                        <zero-md id='javaFile' src=""></zero-md>
 
-                            <blockquote class="quote fw-quote-left fw-quote-md ">
-                              <p>Mauris lectus dolor, varius ut imperdiet nec, dignissim nec ligula. Cras posuere odio et finibus accumsan. Mauris in sem non arcu consectetur posuere sed quis justo. Sed turpis mauris, aliquet ac lacus nec, tempor condimentum justo.</p>
-                              <footer class="quote-author">
-                                <span>Edgar D. Wang</span>
-                              </footer>
-                            </blockquote>
-                            
-                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vestibulum mauris condimentum ultrices scelerisque. Fusce pulvinar cursus luctus. Cras dapibus placerat magna, quis euismod nisi consequat euismod. Curabitur finibus nisi at justo ultricies, nec congue metus rutrum. Quisque vulputate sollicitudin aliquam. Curabitur posuere auctor dapibus.</p>
-                            
-                            <p>Donec mollis a lacus a pharetra. Nam facilisis enim erat, in scelerisque eros mollis quis. Aliquam erat volutpat. Nam vel nibh justo. Nunc vestibulum leo a ultricies malesuada. Proin quis volutpat sem. Morbi consequat lacinia pulvinar.</p>
-
-                        </div>
-                      </div>
-
+                        <script>
+                          const urlParams = new URLSearchParams(window.location.search);
+                          const greetingValue = urlParams.get('greeting');
+                          const linuxValue = urlParams.get('linux');
+                          const javaValue = urlParams.get('java');
+                          
+                          var currentUrl = window.location.href;
+                          var newLink = 'https://letsgrow.web.app/'+greetingValue;
+                          if(linuxValue != null) {
+                            document.getElementById("param").innerHTML = 'Linux';
+                            document.getElementById("fileName").innerHTML = linuxValue;
+                            document.getElementById("linuxFile").src = '/blog/linux/' + linuxValue +'.md';
+                          }
+                          if(javaValue != null) {
+                            document.getElementById("param").innerHTML = 'java';
+                            document.getElementById("fileName").innerHTML = javaValue;
+                            document.getElementById("javaFile").src = '/blog/java/' + javaValue  +'.md';
+                          }
+                          
+                        </script>
                     </div><!-- .entry-content -->
   
                     <div class="entry-meta entry-meta-bottom">

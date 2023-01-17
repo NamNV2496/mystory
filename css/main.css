@@ -32,7 +32,7 @@
 @import url('./fonts/linear-icons-font/style.css');
 
 /* FontAwesome Free Icons Font */
-@import url('./fonts/fontawesome-free-5.12.1-web/css/all.min.css');
+@import url('./fonts/fontawesome-free-5.12.1-web//css/all.min.css');
 
 @import url('./fonts/linecons/style.css');
 
@@ -4073,7 +4073,7 @@ a.post-thumbnail:hover {
 
 .entry-meta.entry-meta-top > span:after {
   content: '';
-  height: 14px;
+  height: 20px;
   line-height: 1em;
   display: inline-block;
   margin: 0 6px 0 9px;
@@ -4082,6 +4082,8 @@ a.post-thumbnail:hover {
   top: 2px;
   position: relative;
 }
+
+
 
 .entry-meta.entry-meta-top > span:last-child:after,
 .entry-meta.entry-meta-top > span:first-child:last-child:after {
@@ -5703,14 +5705,15 @@ a.post-thumbnail:hover {
 
 .home-content.third-style .hp-main-title {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 48px;
+  font-size: 42px;
   line-height: 1.2em;
   margin-top: 5px;
   margin-bottom: 15px;
 }
+
 .home-content.third-style p {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 20;
+  font-size: 14px;
   font-style: italic;
 }
 
@@ -5910,6 +5913,10 @@ a.post-thumbnail:hover {
   }
 }
 
+.map_embedded {
+  display: flex;
+  justify-content: center;
+}
 
 
 
@@ -6027,3 +6034,11 @@ a.post-thumbnail:hover {
 }
 
 
+
+
+
+
+.post-content {
+  background:rgb(254, 254, 232);
+
+}
