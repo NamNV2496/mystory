@@ -150,7 +150,7 @@
                           const urlParams = new URLSearchParams(window.location.search);
                           const greetingValue = urlParams.get('greeting');
                           const linuxValue = urlParams.get('linux');
-                          const javaValue = urlParams.get('java');
+                          const javaValue = urlParams.get('Lava');
                           
                           var currentUrl = window.location.href;
                           var newLink = 'https://letsgrow.web.app/'+greetingValue;
@@ -161,7 +161,7 @@
                             console.log('blog/java/' + linuxValue  +'.md');
                           }
                           if(javaValue != null) {
-                            document.getElementById("param").innerHTML = 'java';
+                            document.getElementById("param").innerHTML = 'Java';
                             document.getElementById("fileName").innerHTML = javaValue;
                             document.getElementById("javaFile").src = './blog/java/' + javaValue  +'.md';
                             console.log('./blog/java/' + javaValue  +'.md');
@@ -170,56 +170,56 @@
                         </script>
                     </div><!-- .entry-content -->
   
-                    <div class="entry-meta entry-meta-bottom">
-                      <div class="date-author">
-                        
-                        <span class="entry-date">
-                          <a href="#" rel="bookmark">
-                            <i class="far fa-clock"></i>
-                            <time class="entry-date" datetime="2020-04-04T08:29:37+00:00"> December 4, 2019</time>
-                          </a>
-                        </span>
-
-                        <span class="author vcard">
-                          <a class="url fn n" href="#" rel="author">
-                            <i class="fas fa-user"></i>
-                            <span> Leven</span>
-                          </a>
-                        </span>
-                      </div>
-  
-                      <!-- Share Buttons -->
-                      <div class="entry-share btn-group share-buttons">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn" target="_blank" title="Share on Facebook">
-                          <i class="fab fa-facebook-f"></i>
-                        </a>
-    
-                        <a href="https://twitter.com/share?url=http://example.com/" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn" target="_blank" title="Share on Twitter">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                        
-                        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://example.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="btn" title="Share on LinkedIn">
-                          <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        
-                        <a href="http://www.digg.com/submit?url=http://example.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="btn" title="Share on Digg">
-                          <i class="fab fa-digg"></i>
-                        </a>
-                      </div>
-                      <!-- /Share Buttons -->
-                    </div>
-
-                    <div class="post-tags">
-                      <span class="tags">
-                        <a href="#" rel="tag">design</a>
-                        <a href="#" rel="tag">plugin</a>
-                        <a href="#" rel="tag">WordPress</a>
-                      </span>
-                    </div>
+                    
                   </div>
                 </article>
 
+                <div class="entry-meta entry-meta-bottom">
+                  <div class="date-author">
+                    
+                    <span class="entry-date">
+                      <a href="#" rel="bookmark">
+                        <i class="far fa-clock"></i>
+                        <time class="entry-date" datetime="2020-04-04T08:29:37+00:00"> December 4, 2019</time>
+                      </a>
+                    </span>
 
+                    <span class="author vcard">
+                      <a class="url fn n" href="#" rel="author">
+                        <i class="fas fa-user"></i>
+                        <span> Leven</span>
+                      </a>
+                    </span>
+                  </div>
+
+                  <!-- Share Buttons -->
+                  <div class="entry-share btn-group share-buttons">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn" target="_blank" title="Share on Facebook">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://twitter.com/share?url=http://example.com/" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn" target="_blank" title="Share on Twitter">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://example.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="btn" title="Share on LinkedIn">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    
+                    <a href="http://www.digg.com/submit?url=http://example.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="btn" title="Share on Digg">
+                      <i class="fab fa-digg"></i>
+                    </a>
+                  </div>
+                  <!-- /Share Buttons -->
+                </div>
+
+                <div class="post-tags">
+                  <span class="tags">
+                    <a href="#" rel="tag">design</a>
+                    <a href="#" rel="tag">plugin</a>
+                    <a href="#" rel="tag">WordPress</a>
+                  </span>
+                </div>
 
 
               </div>

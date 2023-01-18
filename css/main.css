@@ -1343,15 +1343,16 @@ td {
 5. Site content
 ============================================================================= */
 .page-title {
+  font-family: Arial, Baskerville, monospace;
   display: block;
   position: relative;
   background-color: #fdfdfd;
   border-top: 2px solid #f2f2f2;
   border-bottom: 2px solid #f2f2f2;
-  padding: 65px 70px;
+  padding: 25px 70px;
   margin-right: -70px;
   margin-left: -70px;
-  margin-bottom: 65px;
+  margin-bottom: 25px;
   text-align: left;
 }
 
