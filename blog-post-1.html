@@ -157,12 +157,14 @@
                           if(linuxValue != null) {
                             document.getElementById("param").innerHTML = 'Linux';
                             document.getElementById("fileName").innerHTML = linuxValue;
-                            document.getElementById("linuxFile").src = currentUrl +'.md';
+                            document.getElementById("linuxFile").src = 'blog/java/' + linuxValue  +'.md';
+                            console.log('blog/java/' + linuxValue  +'.md');
                           }
                           if(javaValue != null) {
                             document.getElementById("param").innerHTML = 'java';
                             document.getElementById("fileName").innerHTML = javaValue;
-                            document.getElementById("javaFile").src = currentUrl + '/blog/java/' + javaValue  +'.md';
+                            document.getElementById("javaFile").src = './blog/java/' + javaValue  +'.md';
+                            console.log('./blog/java/' + javaValue  +'.md');
                           }
                           
                         </script>
