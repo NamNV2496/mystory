@@ -150,21 +150,21 @@
                           const urlParams = new URLSearchParams(window.location.search);
                           const greetingValue = urlParams.get('greeting');
                           const linuxValue = urlParams.get('linux');
-                          const javaValue = urlParams.get('Lava');
+                          const javaValue = urlParams.get('java');
                           
                           var currentUrl = window.location.href;
                           var newLink = 'https://letsgrow.web.app/'+greetingValue;
                           if(linuxValue != null) {
                             document.getElementById("param").innerHTML = 'Linux';
                             document.getElementById("fileName").innerHTML = linuxValue;
-                            document.getElementById("linuxFile").src = 'blog/java/' + linuxValue  +'.md';
-                            console.log('blog/java/' + linuxValue  +'.md');
+                            document.getElementById("linuxFile").src = 'blog/linux/' + linuxValue  +'.md';
+                            console.log('blog/linux/' + linuxValue  +'.md');
                           }
                           if(javaValue != null) {
                             document.getElementById("param").innerHTML = 'Java';
                             document.getElementById("fileName").innerHTML = javaValue;
-                            document.getElementById("javaFile").src = './blog/java/' + javaValue  +'.md';
-                            console.log('./blog/java/' + javaValue  +'.md');
+                            document.getElementById("javaFile").src = 'blog/java/' + javaValue  +'.md';
+                            console.log('blog/java/' + javaValue  +'.md');
                           }
                           
                         </script>
@@ -180,14 +180,14 @@
                     <span class="entry-date">
                       <a href="#" rel="bookmark">
                         <i class="far fa-clock"></i>
-                        <time class="entry-date" datetime="2020-04-04T08:29:37+00:00"> December 4, 2019</time>
+                        <!-- <time class="entry-date" datetime="2020-04-04T08:29:37+00:00"> December 4, 2019</time> -->
                       </a>
                     </span>
 
                     <span class="author vcard">
                       <a class="url fn n" href="#" rel="author">
                         <i class="fas fa-user"></i>
-                        <span> Leven</span>
+                        <span> Liam</span>
                       </a>
                     </span>
                   </div>
@@ -215,9 +215,8 @@
 
                 <div class="post-tags">
                   <span class="tags">
-                    <a href="#" rel="tag">design</a>
-                    <a href="#" rel="tag">plugin</a>
-                    <a href="#" rel="tag">WordPress</a>
+                    <a href="/blog.html" rel="tag">linux</a>
+                    <a href="/blog-3-columns.html" rel="tag">java</a>
                   </span>
                 </div>
 
