@@ -1,5 +1,34 @@
 # Scheduler
 
+## Mục đích
+chạy function theo thời gian quy định
+
+### Chạy lặp với khoảng thời gian fixedRate sau khi đi deploy initialDelay (Sử dụng kết hợp fixedRate và initialDelay)
+
+- fixedRate:
+```text
+@Scheduled(fixedRate = 2000) // chạy mỗi 2s
+    public void scheduleTaskWithFixRate() {
+        LOGGER.info("job called!");
+    }
+```
+- initialDelay:
+```text
+@Scheduled(initialDelay = 10000) // chạy sau khi khởi app startup 10s và chỉ chạy 1 lần
+    public void scheduleTaskWithInitialDelay() {
+        LOGGER.info("job called!");
+    }
+```
+### Hẹn giờ với cron (Sử dụng cron)
+```text
+@Scheduled(cron = "15 * * * * ?")
+public void scheduleTaskWithCronExpression() {
+    LOGGER.info("job called!");
+}
+```
+
+
+
 
 ## Go to FixDelayService.java file to enable scheduler which you want
 
