@@ -2,7 +2,7 @@
 
 Auditing lưu lại thông tin của người tạo, thời gian tạo, người sửa cuối cùng, thời gian sửa cuối cùng. Nó vô cùng hữu ích cho việc truy xuất thông tin trong dự án 
 
-![img.png](img/auditing.jpg)
+![img.png](blog/java/img/auditing.png)
 
 
 in domain please extends `extends AuditTrail<String>`

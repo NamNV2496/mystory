@@ -1,6 +1,6 @@
 # Logging
 
-![img.png](/blog/java/img/logging.jpg)
+![img.png](blog/java/img/logging.png)
 
 log là 1 phần rất quan trọng trong dự án, dựa trên log giúp chúng ta debug và kiểm thử. Vậy nên cần 1 quy chuẩn cho việc logging này
 

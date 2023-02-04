@@ -4,14 +4,14 @@
 
 Redis là tên viết tắt của Remote Dictionary Server (Máy chủ từ điển từ xa), đây là một kho lưu trữ dữ liệu dưới dạng key-value, trên bộ nhớ, mã nguồn mở, nhanh chóng.
 
-![img.png](../../blog/java/img/redis.png)
+![img.png](blog/java/img/redis.png)
 
 ## Ưu điểm
 
-– Hoạt động lưu trữ key-value trên RAM cao.
-– Cho phép phục hồi dữ liệu khi gặp sự cố nhờ việc lưu trữ dữ liệu trên đĩa cứng .
-– Có khả năng phản hồi rất nhanh chỉ với vài mili giây để xử lý hàng triệu request mỗi giây.
-– Tính năng sao chép đồng bộ giữa 2 cơ sở dữ liệu với nhau (replication) và tính năng cluster.
+- Hoạt động lưu trữ key-value trên RAM cao.
+- Cho phép phục hồi dữ liệu khi gặp sự cố nhờ việc lưu trữ dữ liệu trên đĩa cứng .
+- Có khả năng phản hồi rất nhanh chỉ với vài mili giây để xử lý hàng triệu request mỗi giây.
+- Tính năng sao chép đồng bộ giữa 2 cơ sở dữ liệu với nhau (replication) và tính năng cluster.
 
 
 ## Redis có các kiểu dữ liệu nào?
@@ -22,6 +22,17 @@ Redis là tên viết tắt của Remote Dictionary Server (Máy chủ từ đi�
 - Sorted set: là một danh sách được sắp xếp theo score, trong đó mỗi phần tử như là map của 1 string (member) và 1 floating-point number (score). Tương tự với set, redis cũng có thể thêm, xóa, đọc từng phần tử. Các phần tử của sorted set đều được sắp xếp theo thứ tự từ score nhỏ đến lớn.
 
 
+## Cài đặt
+
+```
+pom.xml
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>s
+    </dependency>
+```
+### Config application.yml
 ```text
 application.yml
 
@@ -31,17 +42,28 @@ spring:
   redis:
     host: localhost
     port: 6379
+#// lecture by application
+#    Password:
+#    Timeout: 1000ms
+#    lettuce:
+#      pool:
+#        max-active: 16
+#        max-idle: 16
+#        min-idle: 8
+#        max-wait: 1ms
+#        time-between-eviction-runs: 9000
+```
+### redis config để set dạng data sẽ được lưu trên redis:
 
+### - STRING: new StringRedisSerializer() Ex: ``[{"roles":"admin"},{"roles":"guest"}]``
+### - JSON: new GenericJackson2JsonRedisSerializer() Ex: ``"{\n  \"AccountID\": \"116C112250\",\n  \"Transaction_id\": \"8000301222000294\",\n  \"Transaction_time\": \"30-12-2022 16:21:54\",\n}"`` - các thông tin sẽ có thêm ký tự \
+
+```
 @Configuration
 @EnableRedisRepositories
 public class RedisConfig {
-    @Value("${spring.redis.host}")
-    private String redisHost;
 
-    @Value("${spring.redis.port}")
-    private int redisPort;
-
-// way 1: use jedis
+// way 1: use jedis rất thông dụng và sử dụng cho single thread
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
         return new JedisConnectionFactory();
@@ -58,7 +80,7 @@ public class RedisConfig {
         return template;
     }
 
-// way 2: use lettuce
+// way 2: use lettuce. Letture hỗ trợ multithread nên sẽ rất an toàn nhưng phải dựa trên thực tế để đưa ra lựa chọn
 //    @Bean
 //    public RedisConnectionFactory redisConnectionFactory() {
 //    return new LettuceConnectionFactory();
@@ -73,4 +95,17 @@ public class RedisConfig {
 }
 ```
 
-)
+
+### Redis hỗ trợ các định dạng
+
+    redisTemplate.opsForValue().set(key)
+    redisTemplate.opsForValue().get(key)
+
+    redisTemplate.opsForList().put(key, data)
+    redisTemplate.opsForList().get(key)
+
+    redisTemplate.opsForHash().put(key, hashKey)
+    redisTemplate.opsForHash().get(key, hashKey)
+
+    redisTemplate.opsForSet().set(key, data)
+    redisTemplate.opsForSet().get(key)

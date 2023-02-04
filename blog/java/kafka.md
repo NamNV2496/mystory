@@ -65,9 +65,9 @@ Consumer group là một group các Consumer consume message từ Kafka server. 
 8. ZOOKEEPER: được dùng để quản lý và bố trí các broker.
 
 
-![img.png](../../blog/java/img/kafka1.png)
+![img.png](blog/java/img/kafka1.png)
 
-![img.png](../../blog/java/img/kafka2.png)
+![img.png](blog/java/img/kafka2.png)
 
 
 # Example about kafka
