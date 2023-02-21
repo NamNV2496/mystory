@@ -1,6 +1,6 @@
 # Meta model
 
-Có khi nào trong source code gặp trong code thấy có những Constant được tự sinh ra nhưng với domain dạng "_" ví dụ **Role_.PERMISSION**
+Có khi nào trong source code gặp trong code thấy có những Constant được tự sinh ra nhưng với domain dạng _ ví dụ Role_.PERMISSION
 
 Thông tin constant này sẽ được tự động sinh ra dựa trên domain được khai báo.
 
@@ -80,3 +80,12 @@ pom.xml
 
 ```
 
+Run to build
+
+    mvn clean install
+
+build or run application 1 times, and the model file will generate automatically
+
+Now, we can call it with Role_.ID,  Role_.NAME,  Role_.APPROVE_DATE,  Role_.TERMINATE_DATE all columns name
+
+![img.png](blog/java/img/metaModel.png)
