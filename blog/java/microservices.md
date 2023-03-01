@@ -66,7 +66,7 @@ Thường người ta hay sử dụng service register sẵn có trong AWS hoặ
 - Khi mà các service của chúng ta deploy thực thế thì phải sử dụng IP động, Euroka sẽ tự động giúp cập nhật, chúng ta không cần thay đổi code và cũng chỉ gần gọi tên service mà ko cần quan tâm địa chỉ IP của nó
 
 
-```text
+```java
 POM
 
 <dependency>  
@@ -82,7 +82,7 @@ POM
 
 ```
 
-```text
+```java
 application.properties
 
 spring.application.name=eureka-server
@@ -96,7 +96,7 @@ server.port=8761
 eureka.client.register-with-eureka=false
 eureka.client.fetch-registry=false
 ```
-```text
+```java
 Config file
 @EnableEurekaServer  
 ```
@@ -131,7 +131,7 @@ có 2 sự lựa chọn:
 
 #### **Cloud Gateway**
 
-```
+```java
 POM
     <dependency>
         <groupId>org.springframework.cloud</groupId>
@@ -145,7 +145,7 @@ POM
     </dependency>
 
 ```
-```
+```java
 appication.properties
 
 spring.application.name=gateway
@@ -166,7 +166,7 @@ spring.cloud.gateway.routes[1].uri=http://localhost:2006/
 spring.cloud.gateway.routes[1].predicates[0]=Path=/consumer/**
 ```
 
-```
+```java
 config file
 @EnableEurekaClient
 ```
@@ -183,7 +183,7 @@ sau khi khởi chạy và có dependency cùng config trỏ vào server Euroka t
 
 lợi thế của zuul keeper là người tạo ra nó là netflix và được bảo đảm về performance cũng như dễ config routing hơn. Trong công nghệ sử dụng kafka cũng đang sử dungh Zuul keeper làm gateway
 
-```
+```java
 POM
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -196,7 +196,7 @@ POM
         </dependency>
 ```
 
-```
+```java
 appication.properties
 
 spring.application.name=zuul-server
@@ -213,7 +213,7 @@ zuul.routes.image-service.url=http://localhost:8000
 ribbon.eureka.enabled=true
 ```
 
-```
+```java
 config file
 @EnableEurekaClient
 @EnableZuulProxy
@@ -227,7 +227,7 @@ config file
 
 cần config để có thể đăng ký vào Euroka
 
-```
+```java
 
     <dependency>
         <groupId>org.springframework.cloud</groupId>
@@ -263,7 +263,7 @@ Với Euroka server, chúng sử dụng Ribbon
 
 
 ở service cloud config
-
+```java
     <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-config-server</artifactId>
@@ -273,10 +273,11 @@ Với Euroka server, chúng sử dụng Ribbon
     spring.cloud.config.server.git.uri=https://github.com/NamNV2496/-spring-cloud-config
     spring.cloud.config.server.git.uri.username=XXXX
     spring.cloud.config.server.git.uri.password=XXXX
-
+```
 
 ở các service load file config của cloud config này
 
+```java
     <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-config</artifactId>
@@ -286,6 +287,7 @@ Với Euroka server, chúng sử dụng Ribbon
         cloud:
             config:
             uri: http://localhost:8888
+```
 
 Annotation `@RefreshScope` là 1 annotation của spring cloud. Các Bean được đánh dấu với annotation này sẽ được làm mới tại thời gian chạy (runtime). Mỗi khi gọi tới thì nó sẽ tạo 1 bean mới.
 

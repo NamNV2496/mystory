@@ -3,7 +3,7 @@
 Object mapper là 1 cách để convert String/Json sang dạng object. Thông thường thì sẽ dùng để kết hợp đẩy lên redis và lấy thông tin từ redis về. Hoặc parse token
 
 ## Cài đặt
-```
+```java
 pom.xml
 
     <dependency>
@@ -21,7 +21,7 @@ pom.xml
 ```
 
 
-```test
+```java
 @Configuration
 public class ObjectMapperConfig {
     @Bean
@@ -44,15 +44,15 @@ public class ObjectMapperConfig {
 - readValue
 
 
-```text
+```java
 
  private final ObjectMapper objectMapperDisableUnknownProperties;
 
 String json = objectMapperDisableUnknownProperties.writeValueAsString(map);
 return objectMapperDisableUnknownProperties.readValue(json, HeaderMapper.class);
- ```
+```
 ### Object mapper cho token
-
+```java
     public TokenMapper getToken() throws JsonProcessingException {
         String token = request.getHeader("authorization");
         token = token.substring(7);
@@ -63,8 +63,9 @@ return objectMapperDisableUnknownProperties.readValue(json, HeaderMapper.class);
         String payload = new String(decoder.decode(chunks[1]));
         return objectMapperDisableUnknownProperties.readValue(payload, TokenMapper.class);
     }
-
+```
 ### Object mapper cho header
+```java
         public HeaderMapper getHeader() throws JsonProcessingException {
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
@@ -77,9 +78,9 @@ return objectMapperDisableUnknownProperties.readValue(json, HeaderMapper.class);
         String json = objectMapperDisableUnknownProperties.writeValueAsString(map);
         return objectMapperDisableUnknownProperties.readValue(json, HeaderMapper.class);
     }
-
+```
 ### Object mapper hỗ trợ lưu list và parse list lên redis
-
+```java
     List<String> abc = List.of("admin", "member");
     redisTemplate.opsForValue().set("keyOfRedis", objectMapperDisableUnknownProperties.writeValueAsString(abc));
 
@@ -87,3 +88,4 @@ return objectMapperDisableUnknownProperties.readValue(json, HeaderMapper.class);
     Object list = redisTemplate.opsForValue().get("keyOfRedis");
     List<String> reciever = objectMapperDisableUnknownProperties.readValue(list.toString(), new TypeReference<>() {});
     // Có thể thay thế String thành 1 list object
+```

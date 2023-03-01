@@ -35,7 +35,7 @@ void sig_handler(int signo)
     - SIG_SETMASK
 
 
-```text
+```C
 #include <stdio.h>
 #include <signal.h>
 
@@ -55,7 +55,7 @@ int main()
 }
 
 ```
-```text
+```C
 void handler_17(int n)
 {
 	printf("%d :someone is writting \n" , getpid());
@@ -89,7 +89,7 @@ int main()
 ```
 
 
-```text
+```C
 		pthread_mutex_lock(&lock_valid_file);
 		if(files_info[i] == 0)
 		{

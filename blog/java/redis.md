@@ -24,7 +24,7 @@ Redis là tên viết tắt của Remote Dictionary Server (Máy chủ từ đi�
 
 ## Cài đặt
 
-```
+```java
 pom.xml
 
     <dependency>
@@ -33,7 +33,7 @@ pom.xml
     </dependency>
 ```
 ### Config application.yml
-```text
+```java
 application.yml
 
 spring:
@@ -58,7 +58,7 @@ spring:
 ### - STRING: new StringRedisSerializer() Ex: ``[{"roles":"admin"},{"roles":"guest"}]``
 ### - JSON: new GenericJackson2JsonRedisSerializer() Ex: ``"{\n  \"AccountID\": \"116C112250\",\n  \"Transaction_id\": \"8000301222000294\",\n  \"Transaction_time\": \"30-12-2022 16:21:54\",\n}"`` - các thông tin sẽ có thêm ký tự \
 
-```
+```java
 @Configuration
 @EnableRedisRepositories
 public class RedisConfig {
@@ -108,7 +108,7 @@ public class RedisConfig {
 
 
 ### Redis hỗ trợ các định dạng
-
+```java
     redisTemplate.opsForValue().set(key)
     redisTemplate.opsForValue().get(key)
 
@@ -120,3 +120,4 @@ public class RedisConfig {
 
     redisTemplate.opsForSet().set(key, data)
     redisTemplate.opsForSet().get(key)
+```

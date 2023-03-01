@@ -13,7 +13,7 @@ Thông tin constant này sẽ được tự động sinh ra dựa trên domain �
 
 ## Cài đặt
 
-```text
+```java
 pom.xml
 
     <dependency>

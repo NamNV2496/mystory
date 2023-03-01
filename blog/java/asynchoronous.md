@@ -95,7 +95,7 @@ to run with async and handle the return value. We use `thenApply()`
 
 To merge future of 2 thread
 
-```text
+```java
               @Async
               Service A(thread1,thread2) \
 MicroService /                             (Merge from Response of ServiceA and ServiceB)
@@ -103,7 +103,7 @@ MicroService /                             (Merge from Response of ServiceA and 
               Service B(thread1,thread2) /
 ```
 
-```text
+```java
 You need to use spring's AsyncResult class to wrap your result and then use its method .completable() to return CompletableFuture object.
 
 When merging future object use CompletableFuture.thenCompose() and CompletableFuture.thenApply() method to merge the data like this:

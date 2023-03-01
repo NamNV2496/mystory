@@ -7,7 +7,7 @@ Auditing lưu lại thông tin của người tạo, thời gian tạo, người
 
 in domain please extends `extends AuditTrail<String>`
 
-```text
+```java
 @Configuration
 @EnableJpaAuditing(auditorAwareRef = "aware")
 class JpaConfig {

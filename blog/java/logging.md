@@ -28,7 +28,7 @@ When a file in the classpath has one of the following names, Spring Boot will au
 ### we wrap `RequestBodyAdviceAdapter` and `ResponseBodyAdviceAdapter` to print log of request and reponse
 
 
-```text
+```java
 @ControllerAdvice
 public class LogRequestBodyAdviceAdapter extends RequestBodyAdviceAdapter {
     @Autowired
@@ -84,7 +84,7 @@ add to logback.xml
 
 log type in `LoggingServiceImpl` class
 
-```text
+```java
 
 REQUEST method=[GET] path=[/person] headers=[application/jsonPostmanRuntime/7.29.2*/*58899ae1-4727-43c7-8ff7-01ebdc264586localhost:8080gzip, deflate, brkeep-alive53]
 
@@ -97,7 +97,7 @@ API:
 
     GET http://localhost:8080/hello
 
-```textmate
+```java
 
 %d – outputs the time that the log message occurred in formats that SimpleDateFormat allows.
 %thread – outputs the name of the thread that the log message occurred in.
@@ -112,7 +112,7 @@ highlight() – sets the color of the output contained in the brackets depending
 
 # *WAY 2: SLEUTH* ## 
 
-```text
+```java
     <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>

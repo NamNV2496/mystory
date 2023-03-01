@@ -77,7 +77,7 @@ Consumer group là một group các Consumer consume message từ Kafka server. 
 - config trong application.yml
 - config trong file config vs @configuraion và @Bean (thực chất nếu có cả 2 thì file @Bean này sẽ ghi đè lên fiel application.yml)
 
-```text
+```java
 =============================== way 1 ===============================
 spring:
   kafka:
@@ -97,7 +97,7 @@ spring:
 
 ```
 
-```text
+```java
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "spring.kafka")
@@ -125,7 +125,7 @@ kafkaConfig.getProducer().getProperties().getTopics().getTestTopic();
 ```
 
 
-```text
+```java
 =============================== way 2 ===============================
 @Configuration
 class KafkaConsumerConfig {
@@ -238,7 +238,7 @@ class KafkaProducerConfig {
 
 ```
 
-```text
+```java
 application.yml
 groupid.consumer: UATgroupId
 
