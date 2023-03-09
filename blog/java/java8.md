@@ -68,37 +68,38 @@ Một Stream pipeline bao gồm: 1 stream source, 0 hoặc nhiều intermediate 
 #### filter()
 
 Stream filter() giúp loại bỏ các phần tử dựa trên các tiêu chí nhất định.
-
+```java
     Stream.iterate(1, count -> count + 1)
                 .filter(number -> number % 3 == 0)
                 .limit(6)
                 .forEach(System.out::println);
-
+```
 #### skip(), limit()
 
 Ý nghĩa của Stream skip(), limit() hoàn toàn tương tự với OFSET và LIMIT trong SQL.
-
+```java
     List<String> data = Arrays.asList("Java", "C#", "C++", "PHP", "Javascript");
     data.stream() //
             .skip(1) //
             .limit(3) //
             .forEach(System.out::print); // C#C++PHP
-
+```
 #### map()
-
+```java
     data.stream()
         .map(String::toUpperCase) // convert each element to upper case
         .forEach(System.out::println);
-
+```
 #### sorted()
 
 Stream sorted() giúp sắp xếp các phần tử theo một thứ tự xác định
 
+```java
     data.stream() //
         .sorted((s1, s2) -> s1.length() - s2.length()) //
         .forEach(System.out::println);
 
-
+```
 ### **Terminal Operations**
 
 
@@ -113,7 +114,7 @@ Phương thức forEach() giúp duyệt qua các phần tử của Stream.
 
 #### collect()
 Phương thức collect() giúp thu thập kết quả Stream sang một Collection. Đây là 1 phương thức quan trọng nhất
-
+```java
     Stream<String> stream = Stream.of("Java", "C#", "C++", "PHP", "Javascript", "C++");
         List<String> languages = stream.collect(Collectors.toList()); // "Java", "C#", "C++", "PHP", "Javascript", "C++"
         List<String> languages2 = stream.collect(Collectors.toSet()); // "Java", "C#", "C++", "PHP", "Javascript"
@@ -125,27 +126,27 @@ Phương thức collect() giúp thu thập kết quả Stream sang một Collect
     List<User> users = List.of(User.builder().name("name1").role("admin").build(), User.builder().name("name2").role("member").build());
         Map<String, String> mapNameRole = users.stream.collect(Collectors.toMap(User::getName, User::getRole)); // map name1/admin, name2/member
         Map<String, User> mapNameRole = users.stream.collect(Collectors.toMap(User::getName, Function.indentity())); // map name1/{object user1}, name2/{object user2}
-
+```
 ####  anyMatch(), allMatch(), noneMatch()
 
 Phương thức anyMatch() trả về một boolean tùy thuộc vào điều kiện được áp dụng trên Stream dữ liệu. Phương thức này trả về true ngay khi phần tử đầu tiên thõa mãn điều kiện, những phần tử còn lại sẽ không được kiểm tra.
-
+```java
     List<String> data = Arrays.asList("Java", "C#", "C++", "PHP", "Javascript");
         boolean result = data.stream().anyMatch((s) -> s.equalsIgnoreCase("Java"));
         System.out.println(result); // true
-
+```
 #### count()
 
 Phương thức count() trả về tổng số phần tử cho dữ liệu luồng.
-
+```java
     List<Integer> data = Arrays.asList(2, 3, 5, 4, 6);
  
     long count = data.stream().filter(num -> num % 3 == 0).count();
     System.out.println("Count = " + count);
-
+```
 #### min(), max()
 Stream.max(), Stream.max() chấp nhận đối số là một Comparator sao cho các item trong stream có thể được so sánh với nhau để tìm tối thiểu (min) hoặc tối đa (max).
-
+```java
     Integer []numbers = {1, 8, 3, 4, 5, 7, 9, 6};
          
         // Find max, min with Array ====================
@@ -191,11 +192,11 @@ Stream.max(), Stream.max() chấp nhận đối số là một Comparator sao ch
         Programing minByExp = students.stream()
                 .min(Comparator.comparing(Programing::getExp))
                 .get(); 
-
+```
 #### summaryStatistics()
 
 Phương thức summaryStatistics() được sử dụng để lấy giá trị count, min, max, sum và average với tập dữ liệu số.
-
+```java
     List<Integer> primes = Arrays.asList(2, 3, 5, 7, 10);
  
     IntSummaryStatistics stats = primes.stream().mapToInt((x) -> x).summaryStatistics();
@@ -204,15 +205,15 @@ Phương thức summaryStatistics() được sử dụng để lấy giá trị 
     System.out.println("Min: " + stats.getMin());
     System.out.println("Sum: " + stats.getSum());
     System.out.println("Average: " + stats.getAverage());
-
+```
 #### reduce()
 Phương thức reduce() kết hợp các phần tử luồng thành một bằng cách sử dụng một BinaryOperator.
-
+```java
     int result = IntStream.of(1, 2, 3, 4).reduce(0, (a, b) -> a + b);
     System.out.println(result); // 10
-
+```
 #### flatmap()
-
+```java
     List<String> students1 = new ArrayList<>();
     students1.add("Khanh");
     
@@ -226,13 +227,13 @@ Phương thức reduce() kết hợp các phần tử luồng thành một bằn
     Stream<String> flatMap = stream.flatMap(l -> l.stream()); // [students1[Khanh]], [students2[Thanh, Dung]]
 
     flatMap.stream().filter(s -> "khanh".equals(s.toString())).forEach(o -> System.out.println(o.toString()));
-
+```
 ## 3. Luồng song song – Parallel Streams
 Như đã đề cập ở trên, các stream có thể là tuần tự (sequential) hoặc song song (parallel). Các thao tác trên các stream tuần tự được thực hiện trên một luồng đơn (single thread) trong khi các phép toán trên các stream song song được thực hiện đồng thời trên nhiều luồng (multi-thread).
 
 ![img.png](blog/java/img/java8_3.png)
 ![img.png](blog/java/img/java8_4.png)
-
+```java
     public static void main(String[] args) {
         List<String> values = createDummyData();
  
@@ -289,7 +290,7 @@ Như đã đề cập ở trên, các stream có thể là tuần tự (sequenti
         }
         return values;
     }
-
+```
 ## 4. Optional trong Java 8
 
 Trong Java 8, chúng ta có một lớp Optional<T> mới được giới thiệu trong gói java.util. Nó được sử dụng để kiểm tra xem một biến có giá trị tồn tại giá trị hay không. Ưu điểm chính của cấu trúc mới này là không có quá nhiều kiểm tra null và tránh lỗi NullPointerException (NPE) lúc runtime. Giống như Collection và Array, Optional cũng là một vùng chứa chứa nhiều nhất một giá trị. Vùng chứa này có thể chứa bất kỳ đối tượng T nào.
@@ -314,7 +315,7 @@ boolean isPresent() : Phương thức này được sử dụng để kiểm tra
 
 ### Collectors.groupingBy()
 Collectors.groupingBy() : được sử dụng để nhóm các đối tượng theo một số thuộc tính và lưu trữ các kết quả trong một Map.
-
+```java
     public static void main(String[] args) {
         List<Book> books = Arrays.asList( //
                 new Book(1, "A", 1), //
@@ -333,14 +334,14 @@ Collectors.groupingBy() : được sử dụng để nhóm các đối tượng 
     Category 1 : 3
     Category 2 : 1
     Category 3 : 1
-
+```
 ### Collectors.partitioningBy()
 
 Collectors.partitioningBy() : là một trường hợp đặc biệt của Collectors.groupingBy() chấp nhận một Predicate và thu thập các phần tử của Stream vào một Map với các giá trị Boolean như khóa và Collection như giá trị.
 
 - Key = true, là một tập hợp các phần tử phù hợp với Predicate đã cho
 - Key = false, là một tập hợp các phần tử không khớp với Predicate đã cho.
-
+```java
     Map<Boolean, Set<Book>> partitioningBy = books.stream()
     .collect(Collectors.partitioningBy(b -> b.getCagegoryId() > 2, Collectors.toSet()));
     System.out.println(partitioningBy);
@@ -354,13 +355,14 @@ Collectors.partitioningBy() : là một trường hợp đặc biệt của Coll
         Book [id=5, title=E, cagegoryId=1]], 
     true=[Book [id=4, title=D, cagegoryId=3]]
     }
-
+```
 ### Collectors.reducing()
 Collectors.reducing() : thực hiện giảm các phần tử đầu vào của nó trong một BinaryOperator được chỉ định.
 
 - identity : giá trị khởi tạo để thực hiện reduction (cũng là giá trị được trả về khi không có phần tử đầu vào).
 - op : một BinaryOperator<T> được sử dụng để giảm các phần tử đầu vào.
 
+```java
     // Find employees with the maximum age of each company
     Comparator<Employee> ageComparator = Comparator.comparing(Employee::getAge);
 
@@ -385,7 +387,7 @@ Collectors.reducing() : thực hiện giảm các phần tử đầu vào của 
     Company: A, Age: 23, Name: Emp2
     Company: B, Age: 22, Name: Emp3
     Total salary expense: 250
-
+```
 Ref: https://gpcoder.com/3973-lop-collectors-trong-java-8/#CollectorstoMap
 
 

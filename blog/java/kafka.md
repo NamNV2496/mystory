@@ -147,11 +147,12 @@ class KafkaConsumerConfig {
         return props;
     }
 
+// consume message là string (key: string, value: string)
     @Bean
     public ConsumerFactory<String, String> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfigs());
     }
-// consume message là string
+
     @Bean
     public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory =
@@ -160,16 +161,15 @@ class KafkaConsumerConfig {
         return factory;
     }
 
-// consume message là json
-
+// consume message là json (key: string, value: json)
     @Bean
     public ConsumerFactory<String, User> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, brokers);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
-        props.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JsonDeserializer.class);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        props.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, ErrorHandlingDeserializer.class);
 
         props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, User.class);
         
@@ -194,58 +194,55 @@ class KafkaProducerConfig {
     @Value("localhost:9092")
     private String bootstrapServers;
 
-// data push to kafka is tring
+// data push to kafka is string (key: string, value: string)
     @Bean
     public ProducerFactory<String, String> producerStringFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(
-                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
-                bootstrapAddress);
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(
-                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
-                StringSerializer.class);
+                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProps.put(
-                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-                StringSerializer.class);
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 
     @Bean
-    public KafkaTemplate<String, String> kafkaStringTemplate() {
+    public KafkaTemplate<String, String> kafkaStringTemplate() { // inject kafkaStringTemplate to send to server
         return new KafkaTemplate<>(producerStringFactory());
     }
 
-// data in Json
+// data in Json (key: string, value: json)
 @Bean
-    public ProducerFactory<String, String> producerJsonFactory() {
+    public ProducerFactory<String, User> producerJsonFactory() {
+    // public ProducerFactory<String, String> producerJsonFactory() { // also OK if we use `KafkaTemplate<String, String> kafkaJsonTemplate()`
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(
-                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
-                bootstrapAddress);
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(
-                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
-                StringSerializer.class);
+                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProps.put(
-                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-                JsonSerializer.class);
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 
     @Bean
-    public KafkaTemplate<String, String> kafkaJsonTemplate() {
+    public KafkaTemplate<String, User> kafkaJsonTemplate() { // inject kafkaJsonTemplate to send to server
+    // public KafkaTemplate<String, String> kafkaJsonTemplate() { // also OK
         return new KafkaTemplate<>(producerJsonFactory());
     }
 
 ```
 
+config to read in special partition of topic
 ```java
 application.yml
 groupid.consumer: UATgroupId
 
 /* Consumer */
 
-@KafkaListener(topics = Constant.KAFKA.STOCK_EVENT_TOPIC, groupId = "${groupid.consumer:copytrade-batch-copier}")
-@KafkaListener(
+    @KafkaListener(topics = Constant.KAFKA.STOCK_EVENT_TOPIC, groupId = "${groupid.consumer:copytrade-batch-copier}")
+    @KafkaListener(
             topicPartitions = {
                     @TopicPartition(
                             topic = "demo",
@@ -257,7 +254,10 @@ groupid.consumer: UATgroupId
                             partitionOffsets = {
                                     @PartitionOffset(partition = "1", initialOffset = "0")
                             })
-            }, groupId = "${groupid.consumer:default_groupId_name}) // nếu có define groupid.consumer: UATgroupId thì sẽ lắng nghe. còn ko thì sẽ là default_groupId_name
+            },
+            groupId = "${groupid.consumer:default_groupId_name}
+        ) // nếu có define groupid.consumer: UATgroupId thì sẽ lắng nghe. còn ko thì sẽ là default_groupId_name
+        
     public void listen(String message) {
         System.out.println("Received Message in group - group-id data: " + message);
     }

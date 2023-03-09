@@ -10,7 +10,7 @@ Liquibase support việc quản lý Database tạo mới, thêm cột, chỉnh s
 
 - Ta sẽ phải tạo ra 1 changeSet khác can thiệp vào table đó trong database.
 
-```java
+```text
 
     <changeSet author="admin" id="role"> <!-- this is author information-->
         <createTable tableName="ROLE"> <!-- name of table-->
@@ -34,7 +34,7 @@ Liquibase support việc quản lý Database tạo mới, thêm cột, chỉnh s
 
 Hoặc run 1 câu SQL
 
-```java
+```text
     <changeSet id="insertData" author="admin">
         <sqlFile path="db/changelog/insert-data.sql"/>
     </changeSet>
@@ -42,7 +42,7 @@ Hoặc run 1 câu SQL
 ### Note: Chỉ tạo Sequence 1 lần
 
 ## Cài đặt
-```java
+```text
 application.yml
 
 spring:
