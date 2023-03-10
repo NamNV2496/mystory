@@ -32,3 +32,9 @@ Ví dụ bây giờ bạn chuyển tiền cho 1 người khác thì việc bạn
 
 Qua đó bạn thấy rằng FE chỉ làm 1 việc còn BE làm 8-10 việc chưa. Đó là sự khó khăn của BE đó.
 
+## Java spring boot là gì?
+
+Đây là 1 framework của java phục vụ cho việc lập trình web backend. Spring boot cung cấp các mẫu sẵn của các module với tính năng riêng biệt dưới dang module cần inject thông qua file pom.xml dưới dạng dependencies
+
+### Đấy là lý do mỗi bài viết sẽ là 1 tính năng riêng biệt nhưng hoàn toàn có thể kết hợp trong 1 dự án. Cùng tìm hiểu nhé 
+
