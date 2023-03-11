@@ -1,6 +1,5 @@
 # Optimize query for Big Database
-KhaiButDauXuan
-image.png
+
 https://github.com/dwarvesf/challenge/blob/query-big-database-from-multiple-table/query-big-database/images/database.png
 
 Introduction

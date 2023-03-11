@@ -86,11 +86,11 @@ spring:
       group-id: group_id
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer // nội dung đc gửi lên server dạng string
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer // nội dung đc gửi lên server dạng string và lắng nghe về dạng string
     producer:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer // nội dung đc gửi lên server dạng json
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer // nội dung nếu sử dụng ở service này để gửi lên server sẽ ở dạng json
       properties:
         topics:
           testTopic: test_topic_application_yml
@@ -133,61 +133,88 @@ class KafkaConsumerConfig {
     @Value("localhost:9092")
     private String bootstrapServers;
 
+// consume message là string (key: string, value: string)
     @Bean
-    public Map<String, Object> consumerConfigs() {
+    public Map<String, String> consumerStringConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "group-id");
+        // this is config to parse data from kafka is String
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        // end
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "100");
         props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "15000");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        return props;
-    }
+        props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
 
-// consume message là string (key: string, value: string)
-    @Bean
-    public ConsumerFactory<String, String> consumerFactory() {
-        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
+        return new DefaultKafkaConsumerFactory<>(props);
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory =
-                new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> StringkafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(consumerStringConfigs());
         return factory;
     }
 
 // consume message là json (key: string, value: json)
     @Bean
-    public ConsumerFactory<String, User> consumerFactory() {
+    public ConsumerFactory<String, User> consumerJsonFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, brokers);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
+        // this is config to parse data from kafka is json but key is string
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        // end
         props.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, ErrorHandlingDeserializer.class);
 
+        // set default type is object in json
         props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, User.class);
+        // end
+        props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
         
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
     @Bean
-    KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, User>>
-    kafkaListenerContainerFactory() {
+    KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, User>> jsonKafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, User> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
+        factory.setConsumerFactory(consumerJsonFactory());
         return factory;
     }
 
-
 }
 
+```
+## Mặc định sẽ lắng nghe về dạng string, nhưng để config lắng nghe về dạng json
+
+```java
+
+config lắng nghe về dạng json
+
+@KafkaListener(topics = Constant.KAFKA, groupId = "${groupid.consumer.test:local_if_null}", containerFactory = "jsonKafkaListenerContainerFactory")
+
+
+config lắng nghe về dạng string
+
+@KafkaListener(topics = Constant.KAFKA, groupId = "${groupid.consumer.test:local_if_null}", containerFactory = "stringKafkaListenerContainerFactory")
+hoặc
+@KafkaListener(topics = Constant.KAFKA, groupId = "${groupid.consumer.test:local_if_null}")
+
+```
+
+
+# Config producer
+
+Nếu lắng nghe kafka dạng <string, string> thì dữ liệu đẩy lên cũng phải đc đồng bộ dang <string, string>
+
+Nếu lắng nghe kafka dạng <string, json> thì dữ liệu đẩy lên cũng phải đc đồng bộ dang <string, json>
+
+```java
 @Configuration
 class KafkaProducerConfig {
 
@@ -228,7 +255,6 @@ class KafkaProducerConfig {
 
     @Bean
     public KafkaTemplate<String, User> kafkaJsonTemplate() { // inject kafkaJsonTemplate to send to server
-    // public KafkaTemplate<String, String> kafkaJsonTemplate() { // also OK
         return new KafkaTemplate<>(producerJsonFactory());
     }
 

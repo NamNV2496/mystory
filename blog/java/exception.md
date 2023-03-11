@@ -32,7 +32,6 @@ Quá trình xử lý exception được gọi là catch exception, nếu Runtime
 
 
 ![img.png](blog/java/img/exception2.png)
-
 ![img.png](blog/java/img/exception3.png)
 
 ## PROCESSING SYNTAX
