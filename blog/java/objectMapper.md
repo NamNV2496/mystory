@@ -89,3 +89,5 @@ return objectMapperDisableUnknownProperties.readValue(json, HeaderMapper.class);
     List<String> reciever = objectMapperDisableUnknownProperties.readValue(list.toString(), new TypeReference<>() {});
     // Có thể thay thế String thành 1 list object
 ```
+
+Ref: https://github.com/NamNV2496/ObjectMapper

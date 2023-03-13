@@ -136,3 +136,21 @@ config on POM and remove logback-spring.xml
 ### Note: ### We can't migrate logbak with Sleuth 
 
 [Reference](https://dzone.com/articles/configuring-logback-with-spring-boot)
+
+
+Enable log in application:
+
+```java
+logging:
+  level:
+    vn.com.vpbanks: debug
+    // enable hibernate log
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
+    // enable hibernate mongoDB
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+    org.springframework.data.mongodb.repository.query: DEBUG
+```
+
+
+Ref: https://github.com/NamNV2496/logging-and-exception

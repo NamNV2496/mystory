@@ -89,3 +89,7 @@ build or run application 1 times, and the model file will generate automatically
 Now, we can call it with Role_.ID,  Role_.NAME,  Role_.APPROVE_DATE,  Role_.TERMINATE_DATE all columns name
 
 ![img.png](blog/java/img/metaModel.png)
+
+
+Ref: https://github.com/NamNV2496/MetaModel
+

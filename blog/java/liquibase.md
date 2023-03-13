@@ -58,5 +58,5 @@ jpa:
 change-log file trỏ đến file **changelog-master** là file tổng hợp các changeSet để chạy.
 
 
-
+Ref: https://github.com/NamNV2496/liquibase
 

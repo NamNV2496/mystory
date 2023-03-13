@@ -42,3 +42,7 @@ public void scheduleTaskWithCronExpression() {
 
 Reverse, if havingValue is **true** the pass conditional is _com.scheduling.enabled: true_,
 false case is _com.scheduling.enabled: false_
+
+
+
+Ref: https://github.com/NamNV2496/scheduling
